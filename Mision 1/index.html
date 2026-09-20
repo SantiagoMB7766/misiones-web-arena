@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Encuentra el objetivo</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="app.js" defer></script>
+</head>
+
+<body>
+
+    <main class="juego">
+
+        <h1>Encuentra el objetivo</h1>
+
+        <section class="datos">
+            <p>
+                Objetivo:
+                <strong id="objetivo">-</strong>
+            </p>
+
+            <p>
+                Puntos:
+                <strong id="puntos">0</strong>
+            </p>
+
+            <p>
+                Vidas:
+                <strong id="vidas">3</strong>
+            </p>
+        </section>
+
+        <label for="nombre">Nombre:</label>
+
+        <input id="nombre"  type="text" maxlength="15" placeholder="Escribe tu nombre">
+
+        <p id="saludo"></p>
+
+        <button id="iniciar">Empezar partida</button>
+
+        <section id="tablero" class="tablero" aria-label="Tablero del juego"></section>
+
+        <p id="mensaje">Pulsa empezar para jugar.</p>
+
+    </main>
+
+</body>
+</html>
