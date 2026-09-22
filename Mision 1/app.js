@@ -26,6 +26,8 @@ function iniciarJuego() {
     vidas = 3;
     juegoActivo = true;
 
+    mensaje.classList.remove("correcto", "error");
+    
     crearTablero();
     generarObjetivo();
     actualizarPantalla();
