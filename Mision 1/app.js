@@ -127,6 +127,11 @@ tablero.addEventListener("click", (event) => {
 // BONUS: tecla secreta
 
 document.addEventListener("keydown", (event) => {
+    
+    if (event.target === nombreInput) {
+        return;
+    }
+
     if (event.key.toLowerCase() === "d") {
         document.body.classList.toggle("modo-oscuro");
     }
