@@ -11,33 +11,89 @@ body {
     align-items: center;
 
     font-family: Arial, sans-serif;
+
+    background-color: #f3f3f3;
+    color: #222;
 }
 
 .juego {
-    width: 350px;
+    width: 400px;
+    max-width: 90%;
+
+    padding: 25px;
+
     text-align: center;
+
+    background-color: white;
+
+    border: 1px solid #ddd;
+    border-radius: 12px;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.explicacion {
+    color: #555;
 }
 
 .datos {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 
+    gap: 10px;
     margin: 20px 0;
+}
+
+.datos p {
+    margin: 0;
+    padding: 10px;
+
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+input {
+    width: 100%;
+
+    padding: 10px;
+    margin: 8px 0 10px;
+
+    font-size: 16px;
+}
+
+#iniciar {
+    padding: 10px 18px;
+
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .tablero {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
 
     gap: 10px;
     margin-top: 20px;
 }
 
+.tablero.nivel-1 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.tablero.nivel-2,
+.tablero.nivel-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .casilla {
-    height: 80px;
+    height: 70px;
 
     font-size: 24px;
     cursor: pointer;
+
+    border: 1px solid #aaa;
+    border-radius: 8px;
 }
 
 .correcto {
@@ -53,4 +109,24 @@ body {
 .modo-oscuro {
     background-color: #111;
     color: white;
+}
+
+.modo-oscuro .juego {
+    background-color: #1f1f1f;
+    border-color: #444;
+}
+
+.modo-oscuro .explicacion {
+    color: #ccc;
+}
+
+.modo-oscuro .datos p {
+    background-color: #2c2c2c;
+}
+
+.modo-oscuro input,
+.modo-oscuro .casilla {
+    background-color: #333;
+    color: white;
+    border-color: #666;
 }
