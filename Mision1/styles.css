@@ -1,0 +1,56 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+}
+
+.juego {
+    width: 350px;
+    text-align: center;
+}
+
+.datos {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 20px 0;
+}
+
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.casilla {
+    height: 80px;
+
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.correcto {
+    background-color: lightgreen;
+}
+
+.error {
+    background-color: lightcoral;
+}
+
+/* BONUS */
+
+.modo-oscuro {
+    background-color: #111;
+    color: white;
+}
