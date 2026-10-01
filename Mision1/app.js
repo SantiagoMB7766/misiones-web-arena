@@ -81,6 +81,7 @@ function crearTablero() {
         casilla.type = "button";
         casilla.textContent = numero;
         casilla.dataset.numero = numero;
+        casilla.setAttribute("aria-label", `Elegir número ${numero}`);
         casilla.classList.add("casilla");
 
         tablero.appendChild(casilla);
