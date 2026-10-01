@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,6 @@
     <title>Encuentra el objetivo</title>
 
     <link rel="stylesheet" href="styles.css">
-
     <script src="app.js" defer></script>
 </head>
 
@@ -17,7 +17,12 @@
 
         <h1>Encuentra el objetivo</h1>
 
-        <section class="datos">
+        <p class="explicacion">
+            Pulsa en el tablero el mismo número que aparece como objetivo.
+        </p>
+
+        <section class="datos" aria-label="Estado de la partida">
+
             <p>
                 Objetivo:
                 <strong id="objetivo">-</strong>
@@ -32,21 +37,47 @@
                 Vidas:
                 <strong id="vidas">3</strong>
             </p>
+
+            <p>
+                Racha:
+                <strong id="racha">0</strong>
+            </p>
+
+            <p>
+                Nivel:
+                <strong id="nivel">Fácil</strong>
+            </p>
+
         </section>
 
         <label for="nombre">Nombre:</label>
 
-        <input id="nombre"  type="text" maxlength="15" placeholder="Escribe tu nombre">
+        <input
+            id="nombre"
+            type="text"
+            maxlength="15"
+            placeholder="Escribe tu nombre"
+            autocomplete="off"
+        >
 
         <p id="saludo"></p>
 
-        <button id="iniciar">Empezar partida</button>
+        <button id="iniciar" type="button">
+            Empezar partida
+        </button>
 
-        <section id="tablero" class="tablero" aria-label="Tablero del juego"></section>
+        <section
+            id="tablero"
+            class="tablero nivel-1"
+            aria-label="Tablero del juego"
+        ></section>
 
-        <p id="mensaje">Pulsa empezar para jugar.</p>
+        <p id="mensaje" aria-live="polite">
+            Pulsa empezar para jugar.
+        </p>
 
     </main>
 
 </body>
+
 </html>
