@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Busca libros por título o autor en Open Library." />
+    <title>LibroRadar | Misión 2</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <script type="module" src="./src/main.js"></script>
+  </head>
+  <body>
+    <main class="contenedor">
+      <p class="etiqueta">MISIÓN 2 · JAVASCRIPT AVANZADO</p>
+      <h1>LibroRadar</h1>
+      <p class="descripcion">Busca libros por título o autor en Open Library.</p>
+
+      <form id="buscador">
+        <label for="consulta">Título o autor</label>
+        <div class="fila">
+          <input id="consulta" type="search" value="javascript" placeholder="Por ejemplo: Dune" required />
+          <button id="boton" type="submit">Buscar</button>
+        </div>
+      </form>
+
+      <p id="estado" role="status" aria-live="polite">Para cargar los libros, abre el proyecto con <strong>npm run dev</strong>.</p>
+      <p id="resumen"></p>
+      <ul id="resultados" aria-label="Libros encontrados"></ul>
+    </main>
+  </body>
+</html>
