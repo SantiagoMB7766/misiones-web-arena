@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f4f5f9;
+  color: #25283a;
+  font-family: Arial, sans-serif;
+}
+
+.contenedor {
+  max-width: 620px;
+  margin: 50px auto;
+  padding: 28px;
+  background: white;
+  border: 1px solid #dadde5;
+  border-radius: 10px;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 13px;
+  border: 1px solid #5c5cc4;
+  border-radius: 6px;
+  background: #5c5cc4;
+  color: white;
+}
+
+button:hover:not(:disabled) {
+  background: #4444a7;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.formulario {
+  margin: 30px 0 20px;
+}
+
+.formulario label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.fila {
+  display: flex;
+  gap: 8px;
+}
+
+.fila input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #c2c4cf;
+  border-radius: 6px;
+}
+
+.sugerencia {
+  margin: 18px 0 30px;
+  padding: 16px;
+  background: #f5f5ff;
+  border-radius: 8px;
+}
+
+.sugerencia p {
+  margin-bottom: 0;
+}
+
+.resumen {
+  font-weight: bold;
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 12px;
+}
+
+.filtros button {
+  background: white;
+  color: #48488e;
+}
+
+.filtros button.activo {
+  background: #5c5cc4;
+  color: white;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+}
+
+.tarea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e5ed;
+}
+
+.tarea label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow-wrap: anywhere;
+}
+
+.terminada span {
+  text-decoration: line-through;
+  color: #7e8193;
+}
+
+.borrar {
+  background: white;
+  border-color: #c3c5d1;
+  color: #494b61;
+}
+
+.borrar:hover:not(:disabled) {
+  background: #eeeeef;
+}
+
+.vacio {
+  color: #6f7282;
+}
+
+@media (max-width: 650px) {
+  .contenedor {
+    margin: 12px;
+    padding: 18px;
+  }
+}
