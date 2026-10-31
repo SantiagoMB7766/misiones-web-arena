@@ -1,33 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import FormularioTarea from "./components/FormularioTarea.jsx";
 import Filtros from "./components/Filtros.jsx";
 import ListaTareas from "./components/ListaTareas.jsx";
-
-function cargarTareas() {
-  try {
-    const guardadas = JSON.parse(localStorage.getItem("tareas-estudio"));
-    return Array.isArray(guardadas) ? guardadas : [];
-  } catch {
-    return [];
-  }
-}
+import Sugerencia from "./components/Sugerencia.jsx";
+import useListaGuardada from "./hooks/useListaGuardada.js";
 
 export default function App() {
-  const [tareas, setTareas] = useState(cargarTareas);
+  const [tareas, setTareas] = useListaGuardada("tareas-estudio");
   const [filtro, setFiltro] = useState("todas");
   const [elegidaId, setElegidaId] = useState(null);
 
-  useEffect(() => {
-    try {
-      localStorage.setItem("tareas-estudio", JSON.stringify(tareas));
-    } catch {
-      console.log("No se pueden guardar las tareas");
-    }
-  }, [tareas]);
-
   function agregarTarea(texto) {
-    const nueva = { id: crypto.randomUUID(), texto, hecha: false };
+    const nueva = { id: crypto.randomUUID(), texto, hecha: false, importante: false };
     setTareas((anteriores) => [...anteriores, nueva]);
+    setElegidaId(null);
   }
 
   function cambiarTarea(id) {
@@ -36,25 +22,40 @@ export default function App() {
         tarea.id === id ? { ...tarea, hecha: !tarea.hecha } : tarea
       )
     );
+    setElegidaId(null);
+  }
+
+  function cambiarPrioridad(id) {
+    setTareas((anteriores) =>
+      anteriores.map((tarea) =>
+        tarea.id === id ? { ...tarea, importante: !tarea.importante } : tarea
+      )
+    );
+    setElegidaId(null);
   }
 
   function borrarTarea(id) {
     setTareas((anteriores) => anteriores.filter((tarea) => tarea.id !== id));
+    setElegidaId(null);
   }
 
   const pendientes = tareas.filter((tarea) => !tarea.hecha);
   const terminadas = tareas.length - pendientes.length;
+  const importantes = pendientes.filter((tarea) => tarea.importante);
   const recomendada = pendientes.find((tarea) => tarea.id === elegidaId);
 
   const visibles = tareas.filter((tarea) => {
     if (filtro === "pendientes") return !tarea.hecha;
     if (filtro === "hechas") return tarea.hecha;
+    if (filtro === "importantes") return !tarea.hecha && tarea.importante;
     return true;
   });
 
   function elegirTarea() {
-    const indice = Math.floor(Math.random() * pendientes.length);
-    setElegidaId(pendientes[indice].id);
+    const opciones = importantes.length > 0 ? importantes : pendientes;
+    if (opciones.length === 0) return;
+    const indice = Math.floor(Math.random() * opciones.length);
+    setElegidaId(opciones[indice].id);
   }
 
   return (
@@ -63,18 +64,22 @@ export default function App() {
       <p>Apunta lo que tienes pendiente y ve terminándolo.</p>
 
       <FormularioTarea onAgregar={agregarTarea} />
-
-      <section className="sugerencia">
-        <button onClick={elegirTarea} disabled={pendientes.length === 0}>
-          Elige por mí
-        </button>
-        {recomendada && <p>Empieza por: <strong>{recomendada.texto}</strong></p>}
-      </section>
+      <Sugerencia
+        pendientes={pendientes.length}
+        recomendada={recomendada}
+        onElegir={elegirTarea}
+      />
 
       <section aria-label="Tareas de estudio">
         <p className="resumen">Terminadas: {terminadas} de {tareas.length}</p>
         <Filtros filtro={filtro} onFiltrar={setFiltro} />
-        <ListaTareas tareas={visibles} onCambiar={cambiarTarea} onBorrar={borrarTarea} />
+        <ListaTareas
+          tareas={visibles}
+          filtro={filtro}
+          onCambiar={cambiarTarea}
+          onPrioridad={cambiarPrioridad}
+          onBorrar={borrarTarea}
+        />
       </section>
     </main>
   );

@@ -39,6 +39,11 @@ button:hover:not(:disabled) {
   background: #4444a7;
 }
 
+.filtros button:hover:not(:disabled),
+.prioridad:hover:not(:disabled) {
+  background: #e4e4ff;
+}
+
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
@@ -107,6 +112,7 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 12px;
   padding: 12px 0;
   border-bottom: 1px solid #e5e5ed;
@@ -116,7 +122,26 @@ button:disabled {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 1;
+  min-width: 160px;
   overflow-wrap: anywhere;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.prioridad {
+  background: white;
+  color: #48488e;
+}
+
+.prioridad.marcada {
+  background: #ececff;
+  font-weight: bold;
 }
 
 .terminada span {

@@ -1,9 +1,24 @@
+const opciones = [
+  { valor: "todas", texto: "Todas" },
+  { valor: "pendientes", texto: "Pendientes" },
+  { valor: "hechas", texto: "Terminadas" },
+  { valor: "importantes", texto: "Prioritarias" },
+];
+
 export default function Filtros({ filtro, onFiltrar }) {
   return (
-    <div className="filtros" aria-label="Filtrar tareas">
-      <button className={filtro === "todas" ? "activo" : ""} onClick={() => onFiltrar("todas")}>Todas</button>
-      <button className={filtro === "pendientes" ? "activo" : ""} onClick={() => onFiltrar("pendientes")}>Pendientes</button>
-      <button className={filtro === "hechas" ? "activo" : ""} onClick={() => onFiltrar("hechas")}>Terminadas</button>
+    <div className="filtros" role="group" aria-label="Filtrar tareas">
+      {opciones.map((opcion) => (
+        <button
+          key={opcion.valor}
+          type="button"
+          className={filtro === opcion.valor ? "activo" : ""}
+          aria-pressed={filtro === opcion.valor}
+          onClick={() => onFiltrar(opcion.valor)}
+        >
+          {opcion.texto}
+        </button>
+      ))}
     </div>
   );
 }
