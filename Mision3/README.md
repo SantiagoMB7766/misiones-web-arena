@@ -4,7 +4,7 @@ Misión 3 de Programación Web I.
 
 Es una aplicación hecha con React para organizar las tareas que tengo pendientes de estudiar. Puedo añadir tareas, marcarlas como terminadas, eliminarlas y filtrarlas.
 
-También tiene un botón para elegir una tarea pendiente al azar. Las tareas se guardan en el navegador para que no se borren al recargar la página.
+También puedo marcar tareas como prioritarias y verlas por separado. El botón «Elige por mí» escoge una tarea pendiente al azar, dando preferencia a las prioritarias. Las tareas se guardan en el navegador para que no se borren al recargar la página.
 
 ## Uso de IA
 
@@ -32,9 +32,9 @@ Estas son 13 consultas que resumen las fases del desarrollo, aunque no son una t
 
 10. El contador de tareas terminadas puedo calcularlo sin crear otro useState?
 
-11. Al recargar la página se me borran las tareas, cómo puedo guardarlas con localStorage?
+11. Al recargar la página se me borran las tareas, cómo puedo guardarlas con localStorage en un hook?
 
-12. Se me ha ocurrido poner un botón que elija una tarea pendiente al azar con Math.random.
+12. Se me ha ocurrido poner un botón que elija una tarea pendiente al azar con Math.random, pero dando prioridad a las importantes.
 
 13. Vite arranca bien pero la pantalla sale en blanco, qué puede estar pasando?
 
@@ -50,6 +50,6 @@ La otra opción era guardar un contador por separado, pero tendría que actualiz
 
 2. Guardado de tareas
 
-He utilizado `useEffect` para guardar las tareas en `localStorage` cada vez que cambia la lista.
+He utilizado `useEffect` dentro del hook `useListaGuardada` para guardar las tareas en `localStorage` cada vez que cambia la lista.
 
-También podría haber puesto el guardado dentro de cada función, pero tendría que repetir el mismo código varias veces. Con `useEffect` lo hago en un único sitio.
+También podría haber puesto el guardado dentro de cada función, pero tendría que repetir el mismo código varias veces. Con el hook lo dejo en un único sitio y no mezclo el guardado con las funciones de `App`.
